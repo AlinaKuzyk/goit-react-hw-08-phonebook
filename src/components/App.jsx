@@ -5,6 +5,7 @@ import AppBar from './AppBar/AppBar';
 import HomeView from 'views/HomeView/HomeView';
 import LoginView from 'views/LoginView/LoginView';
 import RegisterView from 'views/RegisterView/RegisterView';
+import ContactsView from 'views/ContactsView/ContactsView';
 
 const App = () => {
   return (
@@ -14,7 +15,7 @@ const App = () => {
           <Route index element={<HomeView />} />
           <Route path="/register" element={<RegisterView />} />
           <Route path="/login" element={<LoginView />} />
-          {/* <Route path="/contacts" element={<ContactsView />} /> */}
+          <Route path="/contacts" element={<ContactsView />} />
         </Route>
       </Routes>
     </Container>

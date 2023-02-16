@@ -1,22 +1,22 @@
-// import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
-// const filterInitialState = {
-//   filter: '',
-// };
+const filterInitialState = {
+  filter: '',
+};
 
-// const filterSlice = createSlice({
-//   name: 'filter',
-//   initialState: filterInitialState,
+const filterSlice = createSlice({
+  name: 'filter',
+  initialState: filterInitialState,
 
-//   reducers: {
-//     filterContact(state, action) {
-//       state.filter = action.payload;
-//     },
-//   },
-// });
+  reducers: {
+    filterContact(state, action) {
+      state.filter = action.payload;
+    },
+  },
+});
 
-// // Генераторы экшенов
-// export const { filterContact } = filterSlice.actions;
+// Генераторы экшенов
+export const { filterContact } = filterSlice.actions;
 
-// // Редюсер слайса
-// export const filterReducer = filterSlice.reducer;
+// Редюсер слайса
+export const filterReducer = filterSlice.reducer;

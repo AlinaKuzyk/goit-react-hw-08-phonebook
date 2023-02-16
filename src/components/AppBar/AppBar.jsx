@@ -9,12 +9,22 @@ import { useSelector } from 'react-redux';
 const AppBar = () => {
   const isLoggedIn = useSelector(getIsLoggedIn);
   return (
-    <Box component="div">
-      <Navigation />
-      {isLoggedIn ? <UserMenu /> : <AuthNav />}
+    <>
+      <Box
+        component="div"
+        sx={{
+          display: 'flex',
+          padding: '20px',
+          justifyContent: 'space-between',
+          borderBottom: '2px solid grey',
+        }}
+      >
+        <Navigation />
+        {isLoggedIn ? <UserMenu /> : <AuthNav />}
+      </Box>
 
       <Outlet />
-    </Box>
+    </>
   );
 };
 
