@@ -1,19 +1,21 @@
 import { Route, Routes } from 'react-router-dom';
 
 import Container from '@mui/material/Container';
-import { AppBar } from '@mui/material';
-import HomeView from 'Views/HomeView/HomeView';
+import AppBar from './AppBar/AppBar';
+import HomeView from 'views/HomeView/HomeView';
+import LoginView from 'views/LoginView/LoginView';
+import RegisterView from 'views/RegisterView/RegisterView';
 
 const App = () => {
   return (
-    <Container maxWidth="sm">
-      <AppBar />
-
+    <Container maxWidth="md">
       <Routes>
-        <Route path="/" element={<HomeView />} />
-        {/* <Route path="/register" element={<RegisterView />} /> */}
-        {/* <Route path="/login" element={<LoginView />} /> */}
-        {/* <Route path="/contacts" element={<ContactsView />} /> */}
+        <Route path="/" element={<AppBar />}>
+          <Route index element={<HomeView />} />
+          <Route path="/register" element={<RegisterView />} />
+          <Route path="/login" element={<LoginView />} />
+          {/* <Route path="/contacts" element={<ContactsView />} /> */}
+        </Route>
       </Routes>
     </Container>
   );
