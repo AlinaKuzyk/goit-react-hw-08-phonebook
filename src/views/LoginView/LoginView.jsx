@@ -21,7 +21,7 @@ const LoginView = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    dispatch(login(email, password));
+    dispatch(login({ email, password }));
     setEmail('');
     setPassword('');
   };

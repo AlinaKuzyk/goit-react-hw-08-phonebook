@@ -1,21 +1,62 @@
 import { Route, Routes } from 'react-router-dom';
-
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
 import Container from '@mui/material/Container';
 import AppBar from './AppBar/AppBar';
 import HomeView from 'views/HomeView/HomeView';
 import LoginView from 'views/LoginView/LoginView';
 import RegisterView from 'views/RegisterView/RegisterView';
 import ContactsView from 'views/ContactsView/ContactsView';
+import { refreshUser } from 'redux/auth/authOperations';
+import { PrivateRoute } from './PrivateRoute/PrivateRoute';
+import { PublickRoute } from './PublickRoute/PublickRoute';
 
 const App = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
+
   return (
-    <Container maxWidth="md">
+    <Container maxWidth="lr">
       <Routes>
         <Route path="/" element={<AppBar />}>
           <Route index element={<HomeView />} />
-          <Route path="/register" element={<RegisterView />} />
-          <Route path="/login" element={<LoginView />} />
-          <Route path="/contacts" element={<ContactsView />} />
+          <Route
+            path="/register"
+            element={
+              <PublickRoute
+                exact
+                path="/register"
+                redirectTo="/contacts"
+                restricted
+              >
+                <RegisterView />
+              </PublickRoute>
+            }
+          />
+          <Route
+            path="/login"
+            element={
+              <PublickRoute
+                exact
+                path="/login"
+                redirectTo="/contacts"
+                restricted
+              >
+                <LoginView />
+              </PublickRoute>
+            }
+          />
+          <Route
+            path="/contacts"
+            element={
+              <PrivateRoute exact path="/contacts" redirectTo="/login">
+                <ContactsView />
+              </PrivateRoute>
+            }
+          />
         </Route>
       </Routes>
     </Container>

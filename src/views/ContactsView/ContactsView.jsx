@@ -9,9 +9,11 @@ const ContactsView = () => {
   const dispatch = useDispatch();
   const contacts = useSelector(getContacts);
   const filter = useSelector(getFilterState);
+
   useEffect(() => {
     dispatch(fetchContacts());
   }, [dispatch]);
+
   const checkedDupliteName = value => {
     return contacts.some(
       ({ name }) => name.toLowerCase() === value.toLowerCase()
